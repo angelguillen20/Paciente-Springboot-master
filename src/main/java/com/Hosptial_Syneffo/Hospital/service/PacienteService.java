@@ -19,7 +19,7 @@ public class PacienteService {
     public Paciente guaradarPaciente(Paciente pac){
         return pacienteRepository.guardarPaciente(pac);
     }
-    public Paciente getPacienteRut(int rut){
+    public Paciente getPacienteRut(String rut){
         return pacienteRepository.buscarPorRut(rut);
     }
     public Paciente getPacienteNombre(String nombre){
@@ -32,7 +32,7 @@ public class PacienteService {
         pacienteRepository.eliminarPorNombre(nombre);;
         return "Paciente eliminado";
     }
-    public String delatePacientePorRut(int rut){
+    public String delatePacientePorRut(String rut){
         pacienteRepository.eliminarPorRut(rut);
         return "Paciente eliminado";
     }

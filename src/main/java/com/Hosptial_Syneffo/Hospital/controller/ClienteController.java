@@ -1,4 +1,4 @@
-package com.Hosptial_Syneffo.Hospital.controller;
+ package com.Hosptial_Syneffo.Hospital.controller;
 
 import java.util.List;
 
@@ -12,48 +12,49 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Hosptial_Syneffo.Hospital.model.Paciente;
-import com.Hosptial_Syneffo.Hospital.service.PacienteService;
+import com.Hosptial_Syneffo.Hospital.model.cliente;
+import com.Hosptial_Syneffo.Hospital.service.ClienteService;
 
 @RestController
-@RequestMapping("/api/v1/pacientes")
-public class PacienteController {
-
+@RequestMapping("/api/v1/cliente")
+public class ClienteController {
     @Autowired
-    private PacienteService pacienteService;
+    private ClienteService clienteService;
 
     @GetMapping
-    public List<Paciente> listarPaciente(){
-        return pacienteService.getPaciente();
+    public List<cliente> listarPaciente(){
+        return clienteService.getCliente();
     }
     @PostMapping
-    public Paciente agregarPaciente(@RequestBody Paciente paciente){
-        return pacienteService.guaradarPaciente(paciente);
+    public cliente agregarPaciente(@RequestBody cliente cliente){
+        return clienteService.guaradarCliente(cliente);
     }
     @GetMapping("/rutPaciente/{rut}")
-    public Paciente buscarPorRut(@PathVariable String rut){
-        return pacienteService.getPacienteRut(rut);
+    public cliente buscarPorRut(@PathVariable String rut){
+        return clienteService.getPacienteRut(rut);
 
     }
 
      @GetMapping("/nombrePaciente/{nombre}")
-    public Paciente buscarPornombre(@PathVariable String nombre){
-        return pacienteService.getPacienteNombre(nombre);
+    public cliente buscarPornombre(@PathVariable String nombre){
+        return clienteService.getPacienteNombre(nombre);
 
     }
     @PutMapping("/actualizar/{id}")
-    public Paciente actualizarPaciente(@PathVariable int id,@RequestBody Paciente pac){
-        return pacienteService.actualizarPaciente(pac);
+    public cliente actualizarPaciente(@PathVariable int id,@RequestBody cliente cliente){
+        return clienteService.actualizarCliente(cliente);
     }
     @DeleteMapping("/eliminar/{nombre}")
     public String deletePacientePorNombre(@PathVariable String nombre){
-        return pacienteService.delatePacientePorNombre(nombre);
+        return clienteService.delateClientePorNombre(nombre);
 
     }
     @DeleteMapping("/eliminar/{rut}")
     public String deletePacienteRut(@PathVariable String rut){
-        return pacienteService.delatePacientePorRut(rut);
+        return clienteService.delateClientePorRut(rut);
 
     }
 
 }
+
+

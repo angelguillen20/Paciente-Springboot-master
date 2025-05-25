@@ -16,9 +16,9 @@ public class PacienteRepository {
         return listaPacientes;
     }
 
-    public Paciente buscarPorRut(int rut){
+    public Paciente buscarPorRut(String rut){
         for (Paciente paciente : listaPacientes) {
-            if (paciente.getRut() == rut) {
+            if (paciente.getRunPaciente() == rut) {
                 return paciente;
             }
         }
@@ -43,19 +43,20 @@ public class PacienteRepository {
         int id =0;
         int idPosicion = 0; 
         for (int i = 0; i < listaPacientes.size(); i++) {
-            if (listaPacientes.get(i).getId() == pac.getId()) {
-                id = pac.getId();
+            if (listaPacientes.get(i).getIdPaciente() == pac.getIdPaciente()) {
+                id = pac.getIdPaciente();
                 idPosicion=i;
             }
         }
         Paciente Paciente1 = new Paciente(); 
-        Paciente1.setId(id);     
-        Paciente1.setRut(pac.getRut());
+        Paciente1.setIdPaciente(id);     
+        Paciente1.setRunPaciente(pac.getRunPaciente());
         Paciente1.setNombrePaciente(pac.getNombrePaciente());
-        Paciente1.setEstadoPaciente(pac.getEstadoPaciente());
-        Paciente1.setDescripPaciente(pac.getDescripPaciente());
+     
+        Paciente1.setGenero(pac.getGenero());
+        Paciente1.setTipoSangre(pac.getTipoSangre());  
         Paciente1.setFechaNacimiento(pac.getFechaNacimiento());
-        Paciente1.setSeguroPaciente(pac.getSeguroPaciente());
+        Paciente1.setEstadoActual(pac.getEstadoActual());
         listaPacientes.set(idPosicion,Paciente1);
         return Paciente1; 
         
@@ -66,8 +67,8 @@ public class PacienteRepository {
         listaPacientes.removeIf(x -> x.getNombrePaciente() == nombre);
 
     }
-    public void eliminarPorRut(int rut){
-        listaPacientes.removeIf(x -> x.getRut() == rut);
+    public void eliminarPorRut(String rut){
+        listaPacientes.removeIf(x -> x.getRunPaciente() == rut);
     }
 
 
