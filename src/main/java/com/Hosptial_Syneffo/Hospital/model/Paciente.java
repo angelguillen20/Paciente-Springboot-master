@@ -11,12 +11,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class Paciente {
-    private int id; 
-    private int rut;
-    private String nombrePaciente;
-    private String estadoPaciente;
-    private String descripPaciente; 
+    private int idPaciente; 
+    private String runPaciente;
+    private String pNombrePaciente;
+    private String sNombrePaciente;
+    private String aPaternoPaciente;
+    private String genero;
+    private String tipoSangre; 
     private Date fechaNacimiento; 
-    private String seguroPaciente;
+    private String estadoActual;
+
+
 
 }
