@@ -7,21 +7,19 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table (name="atencion")
+@Table (name="paciente")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 
 public class Paciente {
     @Id
-    
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPaciente; 
 
@@ -43,6 +41,5 @@ public class Paciente {
     @Column(nullable=true)
     private String estadoActual;
 
-    @ManyToOne
-    private cliente Cliente;
+
 }
