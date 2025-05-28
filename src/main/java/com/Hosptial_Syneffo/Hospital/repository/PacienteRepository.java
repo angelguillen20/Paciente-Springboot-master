@@ -1,5 +1,6 @@
 package com.Hosptial_Syneffo.Hospital.repository;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,8 +10,16 @@ import com.Hosptial_Syneffo.Hospital.model.Paciente;
 
 @Repository
 public class PacienteRepository {
+    
 
     private List<Paciente> listaPacientes = new ArrayList<>();
+
+
+
+
+
+    
+    
 
     public List<Paciente> obtenerPacientes(){
         return listaPacientes;

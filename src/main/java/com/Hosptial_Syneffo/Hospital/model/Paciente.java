@@ -2,6 +2,8 @@ package com.Hosptial_Syneffo.Hospital.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,6 +38,7 @@ public class Paciente {
     private String tipoSangre; 
 
     @Column(nullable=true)
+   @JsonFormat(pattern = "yyyy-MM-dd") 
     private Date fechaNacimiento; 
 
     @Column(nullable=true)
