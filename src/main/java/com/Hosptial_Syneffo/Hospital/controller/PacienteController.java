@@ -1,16 +1,10 @@
 package com.Hosptial_Syneffo.Hospital.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.Hosptial_Syneffo.Hospital.model.Paciente;
 import com.Hosptial_Syneffo.Hospital.service.PacienteService;
@@ -22,38 +16,30 @@ public class PacienteController {
     @Autowired
     private PacienteService pacienteService;
 
-    @GetMapping
-    public List<Paciente> listarPaciente(){
-        return pacienteService.getPaciente();
-    }
     @PostMapping
-    public Paciente agregarPaciente(@RequestBody Paciente paciente){
-        return pacienteService.guaradarPaciente(paciente);
-    }
-    @GetMapping("/rutPaciente/{rut}")
-    public Paciente buscarPorRut(@PathVariable String rut){
-        return pacienteService.getPacienteRut(rut);
-
+    public Paciente crearPaciente(@RequestBody Paciente paciente) {
+        return pacienteService.crearPaciente(paciente);
     }
 
-     @GetMapping("/nombrePaciente/{nombre}")
-    public Paciente buscarPornombre(@PathVariable String nombre){
-        return pacienteService.getPacienteNombre(nombre);
-
-    }
-    @PutMapping("/actualizar/{id}")
-    public Paciente actualizarPaciente(@PathVariable int id,@RequestBody Paciente pac){
-        return pacienteService.actualizarPaciente(pac);
-    }
-    @DeleteMapping("/eliminar/{nombre}")
-    public String deletePacientePorNombre(@PathVariable String nombre){
-        return pacienteService.delatePacientePorNombre(nombre);
-
-    }
-    @DeleteMapping("/eliminar/{rut}")
-    public String deletePacienteRut(@PathVariable String rut){
-        return pacienteService.delatePacientePorRut(rut);
-
+    @GetMapping("/{id}")
+    public Optional<Paciente> obtenerPacientePorId(@PathVariable int id) {
+        return pacienteService.obtenerPacientePorId(id);
     }
 
+    @GetMapping
+    public List<Paciente> obtenerTodosLosPacientes() {
+        return pacienteService.obtenerTodosLosPacientes();
+    }
+
+    @PutMapping("/{id}")
+    public String actualizarPaciente(@PathVariable int id, @RequestBody Paciente paciente) {
+        return pacienteService.actualizarPaciente(id, paciente);
+    }
+
+    @DeleteMapping("/{id}")
+    public String eliminarPaciente(@PathVariable int id) {
+        pacienteService.eliminarPaciente(id);
+        return "Paciente eliminado correctamente";
+    }
 }
+
